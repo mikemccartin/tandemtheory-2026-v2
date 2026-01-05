@@ -194,6 +194,17 @@ strong {
   color: var(--dark-slate);
 }
 
+/* Global link styles - prevent browser default blue */
+a {
+  color: var(--red-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--red-hover);
+}
+
 /* ----------------------------------------------------------------------------
    Layout System
    ---------------------------------------------------------------------------- */
@@ -226,7 +237,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  background: var(--dark-slate);
+  background: #000000;
   z-index: 1000;
   padding: var(--space-4) 0;
   transition: all var(--duration-normal) var(--ease-out);
@@ -234,7 +245,7 @@ nav {
 
 /* Add subtle shadow when scrolled - can be enhanced with JS */
 nav.scrolled {
-  background: rgba(15, 23, 42, 0.98);
+  background: rgba(0, 0, 0, 0.98);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-md);
@@ -422,7 +433,7 @@ nav a:not(.btn):hover::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 10%;
+  object-position: center center;
   z-index: 1;
 }
 
@@ -1103,7 +1114,7 @@ nav a:not(.btn):hover::after {
    ---------------------------------------------------------------------------- */
 .cta-section {
   padding: var(--section-padding) 0;
-  background: var(--dark-slate);
+  background: #000000;
   color: var(--white);
   text-align: center;
   position: relative;
@@ -1158,7 +1169,7 @@ nav a:not(.btn):hover::after {
    Clean, understated
    ---------------------------------------------------------------------------- */
 footer {
-  background: var(--dark-slate);
+  background: #000000;
   color: rgba(255, 255, 255, 0.6);
   padding: var(--space-12) 0 var(--space-8);
   text-align: center;
@@ -1277,6 +1288,281 @@ footer {
 
 .policy-page address a:hover {
   text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------------------
+   Founder Perspective Sections
+   First-person narrative style, alternating layouts
+   ---------------------------------------------------------------------------- */
+.founder-section {
+  padding: var(--section-padding) 0;
+  position: relative;
+}
+
+.founder-section:nth-child(odd) {
+  background: var(--white);
+}
+
+.founder-section:nth-child(even) {
+  background: var(--light-gray);
+}
+
+.founder-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-12);
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Reverse layout for right-aligned image */
+.founder-right .founder-content {
+  grid-template-columns: 1fr 300px;
+}
+
+.founder-image {
+  position: relative;
+}
+
+.founder-image img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  filter: grayscale(20%);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.founder-section:hover .founder-image img {
+  filter: grayscale(0%);
+  box-shadow: var(--shadow-xl);
+}
+
+.founder-text {
+  padding-top: var(--space-2);
+}
+
+.founder-label {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--red-primary);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.founder-text h2 {
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+  margin-bottom: var(--space-6);
+  color: var(--dark-slate);
+}
+
+.founder-text blockquote {
+  font-size: var(--text-xl);
+  font-style: italic;
+  color: var(--dark-slate);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-6);
+  border-left: 4px solid var(--red-primary);
+  position: relative;
+}
+
+.founder-text p {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--medium-slate);
+  margin-bottom: var(--space-4);
+}
+
+.founder-text p:last-child {
+  margin-bottom: 0;
+}
+
+.founder-cta {
+  margin-top: var(--space-6);
+  font-size: var(--text-base);
+  color: var(--light-slate);
+}
+
+.founder-cta a {
+  color: var(--red-primary);
+  text-decoration: none;
+  font-weight: var(--font-semibold);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.founder-cta a:hover {
+  color: var(--red-hover);
+  text-decoration: underline;
+}
+
+/* Founder team photo (Culture section) */
+.founder-team-photo {
+  margin-top: var(--space-12);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.founder-team-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Founder clients grid (BCE section) */
+.founder-clients {
+  margin-top: var(--space-12);
+}
+
+.founder-clients h3 {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  color: var(--dark-slate);
+}
+
+.clients-grid--compact {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.clients-grid--compact .client-card {
+  height: 100px;
+}
+
+@media (max-width: 768px) {
+  .clients-grid--compact {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Founder products grid (Technology section) */
+.founder-products {
+  margin-top: var(--space-12);
+}
+
+.founder-products h3 {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  color: var(--dark-slate);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.product-item {
+  background: var(--white);
+  border: 1px solid var(--border-slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.product-item:hover {
+  border-color: var(--red-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.product-name {
+  display: block;
+  font-weight: var(--font-semibold);
+  color: var(--dark-slate);
+  margin-bottom: var(--space-2);
+}
+
+.product-desc {
+  font-size: var(--text-sm);
+  color: var(--light-slate);
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Founder impact stats (Results section) */
+.founder-stats {
+  margin-top: var(--space-12);
+}
+
+.founder-stats h3 {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  color: var(--dark-slate);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.impact-item {
+  background: var(--dark-slate);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+  color: var(--white);
+}
+
+.impact-number {
+  display: block;
+  font-size: var(--text-3xl);
+  font-weight: var(--font-extrabold);
+  color: var(--red-primary);
+  margin-bottom: var(--space-2);
+  line-height: 1;
+}
+
+.impact-label {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Founder section responsive */
+@media (max-width: 900px) {
+  .founder-content,
+  .founder-right .founder-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .founder-image {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .founder-text blockquote {
+    border-left: none;
+    padding-left: 0;
+    border-top: 4px solid var(--red-primary);
+    padding-top: var(--space-6);
+  }
+
+  /* Ensure image comes first on mobile for all sections */
+  .founder-right .founder-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .founder-right .founder-image {
+    order: -1;
+  }
 }
 
 /* ----------------------------------------------------------------------------
