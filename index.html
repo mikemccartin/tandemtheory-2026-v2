@@ -178,25 +178,107 @@
       </div>
       <div class="founder-products">
         <h3>Our Proprietary Tools</h3>
-        <div class="products-grid">
-          <div class="product-item">
-            <span class="product-name">Tandem Beam</span>
-            <span class="product-desc">AI-powered campaign management</span>
+        <div class="tools-carousel">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">Inspect</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Media & Tagging QC</span>
+                <p>Monitors inbound traffic to ensure attribution tagging and landing pages are functioning properly.</p>
+              </div>
+            </div>
           </div>
-          <div class="product-item">
-            <span class="product-name">Tandem Inspector</span>
-            <span class="product-desc">Automated QA and testing</span>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">Edison</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Landing Pages</span>
+                <p>Standalone landing page solution with rapid loading and AI-derived best practices.</p>
+              </div>
+            </div>
           </div>
-          <div class="product-item">
-            <span class="product-name">Predictive Analytics</span>
-            <span class="product-desc">Customer behavior modeling</span>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">SuperPrompt</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">AI Content</span>
+                <p>AI-powered content authoring trained on brand guidelines for compliant first-draft articles.</p>
+              </div>
+            </div>
           </div>
-          <div class="product-item">
-            <span class="product-name">Version Zero</span>
-            <span class="product-desc">AI-native creative workflow</span>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">FMT</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Field Marketing</span>
+                <p>Local marketing toolkit for franchisees to order Direct Mail, Paid Social, Display, OLV, and Email.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">Sentinel</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Search Scoring</span>
+                <p>AI monitoring and scoring system for targeted keywords with sentiment assessment.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">Recon</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Competitive Intel</span>
+                <p>Evaluates competitor page structure, tagging, and keyword density for strategic insights.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">ClickBeam</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Attribution</span>
+                <p>Privacy-compliant direct-to-server conversion tracking that preserves attribution sources.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">Pulse</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Email Monitoring</span>
+                <p>Evaluates promotional emails for competitive intelligence or brand diagnostics.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tool-name">Scout</span>
+              </div>
+              <div class="flip-card-back">
+                <span class="tool-category">Data Scraping</span>
+                <p>Programmed web scraping for structured data like pricing and promotions.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <p class="founder-cta"><a href="#">View All Tools →</a></p>
       </div>
     </div>
   </section>
@@ -331,6 +413,17 @@
       } else {
         nav.classList.remove('scrolled');
       }
+    });
+
+    // Flip cards - tap to flip on touch devices
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach(card => {
+      card.addEventListener('click', function() {
+        // Only toggle on touch devices
+        if (window.matchMedia('(hover: none)').matches) {
+          this.classList.toggle('flipped');
+        }
+      });
     });
   </script>
 </body>

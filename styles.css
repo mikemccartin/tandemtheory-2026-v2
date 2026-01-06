@@ -1488,6 +1488,149 @@ footer {
   }
 }
 
+/* ----------------------------------------------------------------------------
+   Tools Carousel - Horizontal Scrolling Flip Cards
+   ---------------------------------------------------------------------------- */
+.tools-carousel {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: var(--space-4) var(--space-2);
+  margin: 0 calc(-1 * var(--space-6));
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--red-primary) var(--border-slate);
+}
+
+.tools-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tools-carousel::-webkit-scrollbar-track {
+  background: var(--border-slate);
+  border-radius: 3px;
+}
+
+.tools-carousel::-webkit-scrollbar-thumb {
+  background: var(--red-primary);
+  border-radius: 3px;
+}
+
+.tools-carousel::-webkit-scrollbar-thumb:hover {
+  background: var(--red-hover);
+}
+
+/* Flip Card Container */
+.flip-card {
+  flex: 0 0 200px;
+  height: 200px;
+  perspective: 1000px;
+  scroll-snap-align: start;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s var(--ease-out);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces - Shared Styles */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  text-align: center;
+}
+
+/* Front Face */
+.flip-card-front {
+  background: linear-gradient(135deg, var(--dark-slate) 0%, #1e293b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
+}
+
+.tool-name {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--white);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Back Face */
+.flip-card-back {
+  background: linear-gradient(135deg, var(--red-primary) 0%, var(--red-hover) 100%);
+  transform: rotateY(180deg);
+  box-shadow: var(--shadow-lg);
+}
+
+.tool-category {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.flip-card-back p {
+  font-size: var(--text-sm);
+  color: var(--white);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Mobile touch support - tap to flip */
+@media (hover: none) {
+  .flip-card {
+    cursor: pointer;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tools-carousel {
+    margin: 0 calc(-1 * var(--space-5));
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+
+  .flip-card {
+    flex: 0 0 180px;
+    height: 180px;
+  }
+
+  .tool-name {
+    font-size: var(--text-lg);
+  }
+
+  .flip-card-back p {
+    font-size: var(--text-xs);
+  }
+}
+
 /* Founder impact stats (Results section) */
 .founder-stats {
   margin-top: var(--space-12);
